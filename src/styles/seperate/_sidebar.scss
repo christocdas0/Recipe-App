@@ -1,0 +1,43 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 50%;
+    background-color: var(--background-color);
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.2), 3px 0 5px var(--shadow-color);
+    animation: getAnimationDuration(.6s) sliderAnimation;
+    z-index: 10;
+
+    .sidebar-link {
+        display: block;
+        padding: .5em 1em;
+        border-left: .4em solid transparent;
+        margin-bottom: 1em;
+        color: var(--text-color);
+        font-weight: bold;
+        font-size: 1.1em;
+        animation: getAnimationDuration(.6s) sliderAnimation forwards;
+        transform: translateX(-100%);
+
+        @for $i from 1 to 3 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i *.1}s;
+            }
+        }
+
+        &.active {
+            border-left: .4em solid var(--primary-color);
+        }
+
+        svg {
+            width: 1.2em;
+            margin-right: .5em;
+        }
+
+        &:hover {
+            border-left-color: var(--primary-color);
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+}
